@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Szakoktató</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="top">
+    <div>
+      <p class="eyebrow">Épületgépészet</p>
+      <h1>Szakoktató</h1>
+    </div>
+    <p class="lede">Víz, gáz, központifűtés és klíma. A válasz csak a beillesztett tananyagból jöhet.</p>
+  </header>
+
+  <main class="layout">
+    <section class="panel" aria-labelledby="tananyag-cim">
+      <div class="panel-head">
+        <h2 id="tananyag-cim">Tananyag</h2>
+        <label class="file-button">
+          Szövegfájl
+          <input id="file-input" type="file" accept=".txt,.md,.text,text/plain">
+        </label>
+      </div>
+      <label class="field-label" for="tananyag">A modul szövege</label>
+      <textarea id="tananyag" rows="16" placeholder="Illeszd be ide a jegyzet, tankönyvrészlet vagy órai anyag szövegét."></textarea>
+      <p id="doc-meta" class="meta">Még nincs tananyag.</p>
+    </section>
+
+    <section class="panel" aria-labelledby="kerdes-cim">
+      <h2 id="kerdes-cim">Kérdés</h2>
+      <label class="field-label" for="api-key">Gemini API-kulcs</label>
+      <input id="api-key" type="password" autocomplete="off" placeholder="Ha a .env már tartalmazza, üresen hagyható">
+      <label class="field-label" for="kerdes">Mit szeretnél megérteni?</label>
+      <textarea id="kerdes" rows="5" placeholder="Például: hogyan kell lejtetni a kondenzvíz-elvezetést a beillesztett anyag szerint?"></textarea>
+      <button id="ask" type="button">Kérdezek a tananyagból</button>
+      <p id="status" class="status" role="status"></p>
+
+      <article id="result" class="result" hidden>
+        <p id="refusal" class="refusal" hidden>Ez az információ a beillesztett tananyagban nem található.</p>
+        <h3>Magyarázat</h3>
+        <div id="answer" class="answer"></div>
+        <div id="check-wrap" hidden>
+          <h3>Ellenőrző kérdés</h3>
+          <p id="check"></p>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer>
+    <p>A modulzáró teszt kérdéseit és megoldókulcsát ez a felület nem adja ki. A kulcs csak a saját gépedről megy a Gemini API-hoz.</p>
+  </footer>
+  <script src="app.js?v=2"></script>
+</body>
+</html>
